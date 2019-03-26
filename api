@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 class Api:
 
     def __init__(self, house):
+        """
+        :param house: house to collect data
+        """
         self.houses = {"Wohnanlage Tarforst - Haus I": {
             "washer_quantity": 4,
             "id_dryer": 1,
@@ -48,6 +51,9 @@ class Api:
 
     @property
     def all_washers(self):
+        """
+        :return: dict containing all washers with their machine ID and their time
+        """
         id_washer = self.houses[self.house]["id_washer"]
         washer_quantity = self.houses[self.house]["washer_quantity"]
         output = {}
@@ -72,6 +78,9 @@ class Api:
 
     @property
     def all_dryers(self):
+        """
+        :return: dict containing all dryers with their machine ID and their time
+        """
         id_dryer = self.houses[self.house]["id_dryer"]
         washer_quantity = self.houses[self.house]["washer_quantity"]
         output = {}
@@ -96,10 +105,16 @@ class Api:
 
     @property
     def all_machines(self):
+        """
+        :return: dict containing all washers with times in one dict and all dryers with times in another dict
+        """
         return {"washers": self.all_washers, "dryers": self.all_dryers}
 
     @property
     def all_available_washers(self):
+        """
+        :return: tuple containing all washers which aren't running with their ID
+        """
         id_washer = self.houses[self.house]["id_washer"]
         washer_quantity = self.houses[self.house]["washer_quantity"]
         output = []
@@ -128,6 +143,9 @@ class Api:
 
     @property
     def all_available_dryers(self):
+        """
+        :return: tuple containing all dryers which aren't running with their ID
+        """
         id_dryer = self.houses[self.house]["id_dryer"]
         washer_quantity = self.houses[self.house]["washer_quantity"]
         output = []
@@ -153,6 +171,3 @@ class Api:
                             if not html_machine_running == "true":
                                 output.append(html_machine_id)
         return tuple(output)
-
-
-
