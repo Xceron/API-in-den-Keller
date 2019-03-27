@@ -1,6 +1,6 @@
 # API-in-den-Keller
 
-API wrapper for app-in-den-keller.de
+Unofficial API wrapper for app-in-den-keller.de
 
 ## Requirements
 
